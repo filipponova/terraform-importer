@@ -12,7 +12,7 @@ terraform-init() {
         echo "File Created! Iserting default config in file..."
         echo "resource \"aws_cloudfront_distribution\" \"distribution\" {}" | tee -a main.tf
         echo "Starting terraform init..."
-        bin/terraform init
+        terraform init
     fi
 
 }
@@ -21,7 +21,7 @@ importer() {
     read -r -p "Enter with the aws resource(s)(eg. rds,ebs,ec2_instance): " AWS_RESOURCE
     read -r -p "Enter with the Resource name: " RESOURCE_NAME
     read -r -p "Enter with the aws profile name: " PROFILE
-    bin/terraformer import aws --resources="${AWS_RESOURCE}" --connect=true  --filter="Name=tags.Name;Value=${RESOURCE_NAME}" --profile "${PROFILE}"
+    terraformer import aws --resources="${AWS_RESOURCE}" --connect=true  --filter="Name=tags.Name;Value=${RESOURCE_NAME}" --profile "${PROFILE}"
 }
 
 replace-provider() {
