@@ -30,7 +30,7 @@ replace-provider() {
     if [ -d "$IMPORTER_DIR" ]; then
         cd "${IMPORTER_DIR}" || return
         echo "Updating provider..."
-        ../../../bin/terraform state replace-provider -auto-approve "registry.terraform.io/-/aws" "hashicorp/aws"
+        terraform state replace-provider -auto-approve "registry.terraform.io/-/aws" "hashicorp/aws"
     else
         echo "Importer Directory Not Found!"
     fi
